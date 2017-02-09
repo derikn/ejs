@@ -202,6 +202,8 @@ console.log(ancestry.filter(function(person){
 console.log(ancestry.filter(isInSet.bind(null, theSet)));
 
 console.log('**********EXERCISES************');
+
+
 //exerciseslatten array
 
 var arrays = [[1,2,3], [4,5], [6]];
@@ -226,6 +228,8 @@ console.log(average(ancestry.filter(hasKnownMother).map(function(p){
 	return p.born - motherBorn;
 })));
 
+//historical life expectancy
+
 var lifespan = ancestry.map(function(p){
 	return {'century': Math.ceil(p.died / 100), 
 	'life': (p.died-p.born)}
@@ -247,29 +251,31 @@ lifespan.map(function(p){
 
 console.log(groups);
 
+
+//every and then some
 function every(array, check){
-	var result = true;
+	console.log(array)
 	for (i = 0; i < array.length; i++){
 		if(!(check(array[i])))
-			result = false;
-			break;
+			return false;
 	}
-	return result;
+	return true;
 }
 
 function some(array, check){
-	var result = false;
+	console.log(array)
 	for (i = 0; i<array.length; i++){
+		console.log(array[i]);
 		if(check(array[i]))
-			result = true;
-			break;
+			return true
 	}
-	return result;
+	return false;
 }
 
-console.log(every([NaN,NaN, NaN], isNaN));
-console.log(every([NaN, NaN, 4], isNaN));
+console.log(every([NaN, NaN, NaN], isNaN));
+console.log(every([NaN, 4, NaN], isNaN));
 console.log(every([4, NaN, 4], isNaN));
+
 console.log(some([NaN, 3, 4], isNaN));
 console.log(some([2, 3, 4], isNaN));
 
